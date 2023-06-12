@@ -1,8 +1,10 @@
-#include <iostream>
+
 #include "table.h"
+#include <vector>
 
 using std::pair;
 using std::cin;
+using std::vector;
 
 int turn = 1;
 

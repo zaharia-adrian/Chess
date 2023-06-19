@@ -107,62 +107,79 @@ void Table::show_table()
     cout << "\n";
 }
 
-pair<int, int> Table::get_coordinates(pair<char, int> cord)
+pair<int, int> Table::get_coordinates(pair<char, int> position)
 {
-    return { (int)(cord.first - 'a') + 1, 8 - cord.second + 1 };
+    return { (int)(position.first - 'a') +1 , 8 - position.second+1 };
 }
 
-void Table::simulate_attack_table(int v[8][8], int color, vector<Piece*>pieces) {
-    for (Piece* p : black_pieces) {
-        if (!p->is_beaten()) {
-            switch (p->get_value()) {
-            case king:
-                break;
-            case queen:
+bool Table::simulate_attack_table(pair<int, int> king_pos, int color) {
+    int king_col = king_pos.first;
+    int king_lin = king_pos.second;
+    for (int col = king_pos.first, lin = king_pos.first; col <= 8 && lin <= 8 && table[lin][col] * color <= 0; col++, lin++)
+        if (table[lin][col] == -color * queen || table[lin][col] == -color * bishop) { cout << "Queen or bishop on the way"; return false; }
 
+    for (int col = king_pos.first, lin = king_pos.first; col <= 8 && lin >= 1 && table[lin][col] * color <= 0; col++, lin--)
+        if (table[lin][col] == -color * queen || table[lin][col] == -color * bishop) { cout << "Queen or bishop on the way"; return false; }
+
+    for (int col = king_pos.first, lin = king_pos.first; col >= 1 && lin <= 8 && table[lin][col] * color <= 0; col--, lin++)
+        if (table[lin][col] == -color * queen || table[lin][col] == -color * bishop) { cout << "Queen or bishop on the way"; return false; }
+
+    for (int col = king_pos.first, lin = king_pos.first; col >= 1 && lin >= 1 && table[lin][col] * color <= 0; col--, lin--)
+        if (table[lin][col] == -color * queen || table[lin][col] == -color * bishop) { cout << "Queen or bishop on the way"; return false; }
+
+
+    for (int col = king_pos.second; col >= 1 && table[king_lin][col] * color <= 0; col--)
+        if (table[col][king_lin] == -color * queen || table[col][king_lin] == -color * rock) { cout << "Queen or rock on the way"; return false; }
+
+    for (int col = king_pos.second; col <= 8 && table[king_lin][col] * color <= 0; col++)
+        if (table[col][king_lin] == -color * queen || table[col][king_lin] == -color * rock) { cout << "Queen or rock on the way"; return false; }
+
+    for (int lin = king_pos.second; lin >= 1 && table[lin][king_col] * -color <= 0; lin--)
+        if (table[king_col][lin] == -color * queen || table[king_col][lin] == -color * rock) { cout << "Queen or rock on the way"; return false; }
+
+    for (int lin = king_pos.second; lin <= 8 && table[lin][king_col] * -color <= 0; lin++)
+        if (table[king_col][lin] == -color * queen || table[king_col][lin] == -color * rock) { cout << "Queen or rock on the way"; return false; }
+
+    int d_lin[] = { -1,-2,-2,-1,1,2,2,1 };
+    int d_col[] = { -2,-1,1,2,2,1,-1,-2 };
+
+    for (int k = 0; k < 8; k++) {
+        int lin = king_lin + d_lin[k];
+        int col = king_col + d_col[k];
+        if (on_table({ lin,col }))
+            if (-color * table[lin][col])
+            {
+                cout << "Knight on the way"; return false;
             }
-        }
+        return true;
     }
 }
 
-void simulate_queen_attack(int v[8][8], int color, pair<int, int> pos) {
 
-}
-bool Table::valid_table(int color) {
+bool Table::valid_table(int color){
     if (color == 1) {
         ///white moved, white should not be in check
         pair<int, int> white_king_pos = (*white_pieces[0]).get_position();
-        int black_attacks[8][8];
-        copy_table(black_attacks);
-        for (Piece* p : black_pieces) {
-            if (!(*p).is_beaten());
-        }
-
+        return simulate_attack_table(white_king_pos,1);    
     }
     else {
         ///black moved, black should not be in check
         pair<int, int> black_king_pos = (*black_pieces[0]).get_position();
-        int white_attacks[8][8];
-        copy_table(white_attacks);
+        return simulate_attack_table(black_king_pos, -1);
     }
-
-
 }
 
-void Table::copy_table(int v[8][8]) {
-    for (int i = 1; i <= 8; i++)
-        for (int j = 1; j <= 8; j++)
-            v[i][j] = table[i][j];
-}
+
 
 void Table::make_move(pair<char, int> i, pair<char, int> f, int color)
 {
     pair<int, int> pos_i = get_coordinates(i);
     pair<int, int> pos_f = get_coordinates(f);
+
     if (!on_table(pos_i) || !on_table(pos_f))
     {
-        cout << "Invalid move";
-        return;
+        cout << "Positions are not on the table or invalid\n";
+      
     }
     switch (table[pos_i.second][pos_i.first] * color)
     {
@@ -183,8 +200,15 @@ void Table::make_move(pair<char, int> i, pair<char, int> f, int color)
         break;
     case pawn:
         pawn_move(pos_i, pos_f);
+        break;
     default:
         break;
     }
+
+    if (!valid_table(color)) {
+        cout << "Invalid table\n";
+    }
+
+
 }
 

@@ -15,11 +15,13 @@ class Table {
     vector<Piece*> black_pieces;
 
     bool valid_table(int);
-    void copy_table(int[8][8]);
-    void simulate_attack_table(int[8][8], int, vector<Piece*>);
+
+    bool simulate_attack_table(pair<int,int>,int);
     pair<int, int> get_coordinates(pair<char, int>);
     bool valid_move(pair<int, int>, pair<int, int>, vector<pair<int, int>>);
     bool free_way(pair<int, int>, pair<int, int>);
+    void move_piece(pair<int, int>, pair<int, int>);
+    void unmake_move(pair<int, int>, pair<int, int>);
 
     bool king_move(pair<int, int>, pair<int, int>);
     bool queen_move(pair<int, int>, pair<int, int>);
@@ -28,8 +30,7 @@ class Table {
     bool bishop_move(pair<int, int>, pair<int, int>);
     bool pawn_move(pair<int, int>, pair<int, int>);
 
-    void simulate_queen_attack(int[8][8], int, pair<int, int>);
-    void simulate_rock_attack(int[8][8], int, pair<int, int>);
+
 
     bool on_table(pair<int, int> position) {
         return (position.first >= 1 && position.first <= 8 && position.second >= 1 && position.second <= 8);

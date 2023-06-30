@@ -20,22 +20,18 @@ int lin_p, col_p;
 
 int main() {
 
-	Table T;
-	sf::Font f;
-	f.loadFromFile("Fonts/Century.TTF");
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "CHESS GAME", sf::Style::Default);
 
+	Table T;
 	pair<char, int> pos_i;
 	pair<char, int> pos_f;
 
-	sf::Texture pawn_b;
-	pawn_b.loadFromFile("Pieces/bishop_b.png");
-	sf::Sprite sprite(pawn_b);
-	sprite.setPosition(sf::Vector2f(200.f, 154.f));
+	///main font
+	sf::Font f;
+	f.loadFromFile("Fonts/Century.TTF");
 
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML_LINK", sf::Style::Default);
-
+	///board
 	sf::RectangleShape board(sf::Vector2f(square_size * 9, square_size * 9));
-
 	board.setFillColor(sf::Color(122, 63, 33, 255));
 	board.setPosition(sf::Vector2f(margin_left - square_size / 2, margin_top - square_size / 2));
 
@@ -77,14 +73,12 @@ int main() {
 						cout << pos_i.first << " " << pos_i.second << "\n";
 						has_initial_pos = true;
 					}
-
 				}
 			}
 		}
-		///clear
+
 		window.clear(sf::Color(26, 26, 26, 255));
 
-		///update and draw
 		window.draw(board);
 
 		for (int i = 0; i <= 8; i++) {
@@ -171,40 +165,15 @@ int main() {
 					default:
 						break;
 					}
-					if (!p.loadFromFile(path)) {
-						cout << "Unable to load piece with value=" << piece << "\n";
-					}
+					if (!p.loadFromFile(path)) cout << "Unable to load piece with value=" << piece << "\n";
 					sf::Sprite P(p);
-					if (lin == lin_p && col == col_p)
-						P.scale(1.1f, 1.1f);
-
+					if (lin == lin_p && col == col_p) P.scale(1.1f, 1.1f);
 					P.setPosition(sf::Vector2f(col * square_size + 115.f, lin * square_size + 60.f));
 					window.draw(P);
 				}
 			}
 		}
 		window.display();
-
-
-		/*(turn == 1) ? cout << "White moves\n" : cout << "Black moves\n";
-		cout << "Cititi coordonatele initiale\n";
-		cin >> pos_i.first >> pos_i.second;
-		cout << "Cititi coordonatele finale\n";
-		cin >> pos_f.first >> pos_f.second;
-		if (T.make_move(pos_i, pos_f, turn))
-			turn = -turn;*/
 	}
 	return 0;
 }
-
-
-///TABLA
-
-///  4  3  2  6  5  2  3  4
-///  1  1  1  1  1  1  1  1
-///  0  0  0  0  0  0  0  0
-///  0  0  0  0  0  0  0  0
-///  0  0  0  0  0  0  0  0
-///  0  0  0  0  0  0  0  0
-/// -1 -1 -1 -1 -1 -1 -1 -1
-/// -4 -3 -2 -6 -5 -2 -3 -4

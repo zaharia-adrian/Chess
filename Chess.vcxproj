@@ -133,10 +133,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bishop_move.cpp" />
     <ClCompile Include="Chess.cpp" />
+    <ClCompile Include="king_move.cpp" />
+    <ClCompile Include="knight_move.cpp" />
+    <ClCompile Include="make_move.cpp" />
+    <ClCompile Include="pawn_move.cpp" />
     <ClCompile Include="piece.cpp" />
-    <ClCompile Include="pieces_moves.cpp" />
+    <ClCompile Include="queen_move.cpp" />
+    <ClCompile Include="rook_move.cpp" />
     <ClCompile Include="table.cpp" />
+    <ClCompile Include="verify_check.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="piece.h" />

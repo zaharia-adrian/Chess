@@ -13,19 +13,46 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{3c82c5ad-129a-4c43-8fe5-22ddfbcf3ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\pieces_moves">
+      <UniqueIdentifier>{ec76f423-58c0-4e10-801a-2deed8619264}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="queen_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
+    <ClCompile Include="king_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
+    <ClCompile Include="pawn_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
+    <ClCompile Include="knight_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
+    <ClCompile Include="bishop_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
+    <ClCompile Include="rook_move.cpp">
+      <Filter>Source Files\src\pieces_moves</Filter>
+    </ClCompile>
     <ClCompile Include="Chess.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="piece.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="table.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="pieces_moves.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="verify_check.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="make_move.cpp">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

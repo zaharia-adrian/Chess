@@ -1,23 +1,31 @@
 #pragma once
 #include <iostream>
-using std::pair;
-using std::cout;
+
+
+using namespace std;
+
+struct pos {
+    int lin, col;
+};
+
 
 class Piece {
-private:
     int value;
-    pair<int, int> position;
-    bool beaten = false;
+    pos position;
+    bool beaten;
 public:
-    Piece(int, pair<int, int>);
+    Piece(int, pair<int,int>);
     bool is_beaten() {
         return beaten;
     }
-    void set_beatean() {
+    void set_beaten() {
         beaten = true;
     }
-    pair<int, int> get_position() {
+    pos get_position() {
         return position;
+    }
+    void set_position(pos posit) {
+        position = posit;
     }
 
     void set_value(int new_value) {

@@ -1,6 +1,10 @@
-#include  "piece.h"
+#pragma once
+#include "piece.h"
+#include "table.h"
 
-Piece::Piece(int value, pair<int, int> new_position) {
-    value = value;
-    position = new_position;
+Piece::Piece(int val, pair<int,int> pos) {
+    value = val;
+    position.lin = pos.first;
+    position.col = pos.second;
+    beaten = false;
 }

@@ -133,21 +133,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bishop_move.cpp" />
-    <ClCompile Include="Chess.cpp" />
-    <ClCompile Include="king_move.cpp" />
-    <ClCompile Include="knight_move.cpp" />
-    <ClCompile Include="make_move.cpp" />
-    <ClCompile Include="pawn_move.cpp" />
-    <ClCompile Include="piece.cpp" />
-    <ClCompile Include="queen_move.cpp" />
-    <ClCompile Include="rook_move.cpp" />
-    <ClCompile Include="table.cpp" />
-    <ClCompile Include="verify_check.cpp" />
+    <ClCompile Include="src\pieces_moves\bishop_move.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\pieces_moves\king_move.cpp" />
+    <ClCompile Include="src\pieces_moves\knight_move.cpp" />
+    <ClCompile Include="src\pieces_moves\make_move.cpp" />
+    <ClCompile Include="src\pieces_moves\pawn_move.cpp" />
+    <ClCompile Include="src\piece\piece.cpp" />
+    <ClCompile Include="src\pieces_moves\queen_move.cpp" />
+    <ClCompile Include="src\pieces_moves\rook_move.cpp" />
+    <ClCompile Include="src\table\table.cpp" />
+    <ClCompile Include="src\table\verify_check.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="piece.h" />
-    <ClInclude Include="table.h" />
+    <ClInclude Include="src\piece\piece.h" />
+    <ClInclude Include="src\table\table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

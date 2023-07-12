@@ -1,9 +1,7 @@
 #pragma once
-
-
 #include <iostream>
 #include <vector>
-#include "piece.h"
+#include "../piece/piece.h"
 
 
 using namespace std;

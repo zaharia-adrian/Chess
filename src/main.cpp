@@ -1,7 +1,12 @@
 
-#include "table.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
+
+#include "table/table.h"
+#include "piece/piece.h"
+
+
+
 
 using std::pair;
 using std::cin;
@@ -17,6 +22,59 @@ float margin_left = 200.f;
 
 bool has_initial_pos = false;
 int lin_p, col_p;
+
+
+void draw_piece(sf::RenderWindow& window, int piece, pos pos_piece, pos pos_select, float square_size) {
+	if (piece != 0) {
+		sf::Texture p;
+		string path;
+		switch (piece) {
+		case king:
+			path = "Pieces/king_w.png";
+			break;
+		case -king:
+			path = "Pieces/king_b.png";
+			break;
+		case queen:
+			path = "Pieces/queen_w.png";
+			break;
+		case -queen:
+			path = "Pieces/queen_b.png";
+			break;
+		case rook:
+			path = "Pieces/rook_w.png";
+			break;
+		case -rook:
+			path = "Pieces/rook_b.png";
+			break;
+		case knight:
+			path = "Pieces/knight_w.png";
+			break;
+		case -knight:
+			path = "Pieces/knight_b.png";
+			break;
+		case bishop:
+			path = "Pieces/bishop_w.png";
+			break;
+		case -bishop:
+			path = "Pieces/bishop_b.png";
+			break;
+		case pawn:
+			path = "Pieces/pawn_w.png";
+			break;
+		case -pawn:
+			path = "Pieces/pawn_b.png";
+			break;
+		default:
+			break;
+		}
+		if (!p.loadFromFile(path)) cout << "Unable to load piece with value=" << piece << "\n";
+		sf::Sprite P(p);
+		if (pos_piece.lin == pos_select.lin && pos_piece.col == pos_select.col) P.scale(1.1f, 1.1f);
+		P.setPosition(sf::Vector2f(pos_piece.col * square_size + 115.f, pos_piece.lin * square_size + 60.f));
+		window.draw(P);
+	}
+}
 
 int main() {
 
@@ -119,61 +177,13 @@ int main() {
 		}
 		///draw pieces
 		int piece;
-		for (int lin = 1; lin <= 8; lin++) {
+		for (int lin = 1; lin <= 8; lin++)
 			for (int col = 1; col <= 8; col++) {
 				piece = T.get_value(lin, col);
-				if (piece != 0) {
-					sf::Texture p;
-					string path;
-					switch (piece) {
-					case king:
-						path = "Pieces/king_w.png";
-						break;
-					case -king:
-						path = "Pieces/king_b.png";
-						break;
-					case queen:
-						path = "Pieces/queen_w.png";
-						break;
-					case -queen:
-						path = "Pieces/queen_b.png";
-						break;
-					case rook:
-						path = "Pieces/rook_w.png";
-						break;
-					case -rook:
-						path = "Pieces/rook_b.png";
-						break;
-					case knight:
-						path = "Pieces/knight_w.png";
-						break;
-					case -knight:
-						path = "Pieces/knight_b.png";
-						break;
-					case bishop:
-						path = "Pieces/bishop_w.png";
-						break;
-					case -bishop:
-						path = "Pieces/bishop_b.png";
-						break;
-					case pawn:
-						path = "Pieces/pawn_w.png";
-						break;
-					case -pawn:
-						path = "Pieces/pawn_b.png";
-						break;
-					default:
-						break;
-					}
-					if (!p.loadFromFile(path)) cout << "Unable to load piece with value=" << piece << "\n";
-					sf::Sprite P(p);
-					if (lin == lin_p && col == col_p) P.scale(1.1f, 1.1f);
-					P.setPosition(sf::Vector2f(col * square_size + 115.f, lin * square_size + 60.f));
-					window.draw(P);
-				}
+				draw_piece(window, piece, { lin,col }, { lin_p,col_p }, square_size);
 			}
-		}
-		window.display();
-	}
-	return 0;
+	
+	window.display();
+}
+return 0;
 }

@@ -1,4 +1,4 @@
-#include "table.h"
+#include "../table/table.h"
 
 bool Table::valid_move(pos pos_i, pos pos_f, vector<pair<int, int>> moves)
 {

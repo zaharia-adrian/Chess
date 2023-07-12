@@ -21,45 +21,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="queen_move.cpp">
+    <ClCompile Include="src\pieces_moves\queen_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="king_move.cpp">
+    <ClCompile Include="src\pieces_moves\king_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="pawn_move.cpp">
+    <ClCompile Include="src\pieces_moves\pawn_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="knight_move.cpp">
+    <ClCompile Include="src\pieces_moves\knight_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="bishop_move.cpp">
+    <ClCompile Include="src\pieces_moves\bishop_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="rook_move.cpp">
+    <ClCompile Include="src\pieces_moves\rook_move.cpp">
       <Filter>Source Files\src\pieces_moves</Filter>
     </ClCompile>
-    <ClCompile Include="Chess.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="piece.cpp">
+    <ClCompile Include="src\piece\piece.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="table.cpp">
+    <ClCompile Include="src\table\table.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="verify_check.cpp">
+    <ClCompile Include="src\table\verify_check.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="make_move.cpp">
+    <ClCompile Include="src\pieces_moves\make_move.cpp">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="table.h">
+    <ClInclude Include="src\table\table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="piece.h">
+    <ClInclude Include="src\piece\piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

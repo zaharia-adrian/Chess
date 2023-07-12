@@ -1,4 +1,4 @@
-#include "table.h"
+#include "../table/table.h"
 
 vector<pair<int, int>> king_moves{{-1, -1}, { 0,-1 }, { 1,-1 }, { -1,0 }, { 1,0 }, { -1,1 }, { 0,1 }, { 1,1 }, { 2,0 }, { -2,0 }};
 

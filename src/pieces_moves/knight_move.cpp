@@ -1,4 +1,4 @@
-#include "table.h"
+#include "../table/table.h"
 
 vector<pair<int, int>> knight_moves{{-2, -1}, { -2,1 }, { -1,-2 }, { 1,-2 }, { 2,-1 }, { 2,1 }, { 1,2 }, { -1,2 }};
 

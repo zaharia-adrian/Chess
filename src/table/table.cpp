@@ -1,6 +1,6 @@
 #pragma once
 #include "table.h"
-#include "piece.h"
+#include "../piece/piece.h"
 
 Table::Table()
 {

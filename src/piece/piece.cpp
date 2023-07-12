@@ -1,6 +1,6 @@
 #pragma once
 #include "piece.h"
-#include "table.h"
+#include "../table/table.h"
 
 Piece::Piece(int val, pair<int,int> pos) {
     value = val;
@@ -8,3 +8,4 @@ Piece::Piece(int val, pair<int,int> pos) {
     position.col = pos.second;
     beaten = false;
 }
+

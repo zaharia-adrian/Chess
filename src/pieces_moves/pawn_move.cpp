@@ -1,4 +1,4 @@
-#include "table.h"
+#include "../table/table.h"
 
 vector<pair<int, int>> white_pawn_moves{{0, -1}, { 0,-2 }, { -1,-1 }, { 1,-1 }};
 vector<pair<int, int>> black_pawn_moves{{0, 1}, { 0,2 }, { -1,1 }, { 1,1 }};

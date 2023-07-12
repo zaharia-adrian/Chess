@@ -2,6 +2,7 @@
 #include <iostream>
 
 
+
 using namespace std;
 
 struct pos {
@@ -10,7 +11,7 @@ struct pos {
 
 
 class Piece {
-    int value;
+    int value; 
     pos position;
     bool beaten;
 public:

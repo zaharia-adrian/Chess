@@ -1,10 +1,15 @@
 #pragma once
 #include <iostream>
+#include "SFML/Graphics.hpp"
 #include <vector>
 #include "../piece/piece.h"
 
 
 using namespace std;
+
+const float square_size = 90.f;
+const float margin_top = 150.f;
+const float margin_left = 200.f;
 
 const int king = 6;
 const int queen = 5;
@@ -47,19 +52,17 @@ class Table {
 	public:
 		vector<Piece*> white_pieces;
 	    vector<Piece*> black_pieces;
+
 	    Table();
 	    void show_table();
+		void draw_table(sf::RenderWindow&, pos, sf::Font);
+		void draw_piece(sf::RenderWindow&, int, pos, pos, float);
 	    bool make_move(pair<char, int>, pair<char, int>, int);
+
 		int get_value(int lin, int col) {
 			return table[lin][col];
 		}
 		void set_value(int lin, int col, int value) {
 			table[lin][col] = value;
 		}
-	
-	    /*void show_vector() {
-	        for (Piece *p : white_pieces) {
-	            cout << p->get_position().lin << " " << p->get_position().col << "\n";
-	        }
-	    }*/
 };
